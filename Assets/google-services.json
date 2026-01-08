@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "287354825914",
+    "project_id": "fundamentals-50570",
+    "storage_bucket": "fundamentals-50570.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:287354825914:android:4397cd61f82c5cf614e683",
+        "android_client_info": {
+          "package_name": "com.iri.fundamentals"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnI-v2MM9NAc_BRJTcvE76WU7golVmI1g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
