@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     public CharacterController controller;
     private Player playerInput;
-
+    private Animator anim;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     public InputActionReference moveAction;
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         playerInput = new Player();
         controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
     }
 
     private void OnEnable()
@@ -49,7 +50,15 @@ public class PlayerController : MonoBehaviour
         move = Vector3.ClampMagnitude(move, 1f);
 
         if (move != Vector3.zero)
+        {
             transform.forward = move;
+            anim.SetBool("isMove", true);
+        }
+        else
+        {
+
+            anim.SetBool("isMove", false);
+        }
 
         // Jump using WasPressedThisFrame()
         if (groundedPlayer && playerInput.PlayerMain.Jump.triggered)
