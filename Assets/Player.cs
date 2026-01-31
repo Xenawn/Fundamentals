@@ -118,6 +118,15 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""45533edc-5324-4cd3-92ea-16598e36376b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -208,6 +217,17 @@ public partial class @Player: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf00b33b-0703-471b-aee4-ef36feb6fe71"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -219,6 +239,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
         m_PlayerMain_Move = m_PlayerMain.FindAction("Move", throwIfNotFound: true);
         m_PlayerMain_Jump = m_PlayerMain.FindAction("Jump", throwIfNotFound: true);
         m_PlayerMain_Look = m_PlayerMain.FindAction("Look", throwIfNotFound: true);
+        m_PlayerMain_Attack = m_PlayerMain.FindAction("Attack", throwIfNotFound: true);
     }
 
     ~@Player()
@@ -302,6 +323,7 @@ public partial class @Player: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerMain_Move;
     private readonly InputAction m_PlayerMain_Jump;
     private readonly InputAction m_PlayerMain_Look;
+    private readonly InputAction m_PlayerMain_Attack;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerMain".
     /// </summary>
@@ -325,6 +347,10 @@ public partial class @Player: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerMain/Look".
         /// </summary>
         public InputAction @Look => m_Wrapper.m_PlayerMain_Look;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerMain/Attack".
+        /// </summary>
+        public InputAction @Attack => m_Wrapper.m_PlayerMain_Attack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -360,6 +386,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
         }
 
         /// <summary>
@@ -380,6 +409,9 @@ public partial class @Player: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
         }
 
         /// <summary>
@@ -441,5 +473,12 @@ public partial class @Player: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLook(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

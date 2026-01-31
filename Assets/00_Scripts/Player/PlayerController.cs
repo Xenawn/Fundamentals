@@ -53,7 +53,10 @@ public class PlayerController : MonoBehaviour
 
         // Read input
         Vector2 movementInput = playerInput.PlayerMain.Move.ReadValue<Vector2>();
-
+        if (playerInput.PlayerMain.Attack.triggered)
+        {
+            Debug.Log("클릭완료");
+        }
         // 카메라 방향 가져오기
         Vector3 cameraForward = cameraTransform.forward;
         Vector3 cameraRight = cameraTransform.right;
