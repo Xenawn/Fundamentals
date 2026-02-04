@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
         if (playerInput.PlayerMain.Attack.triggered)
         {
             Debug.Log("클릭완료");
+            anim.SetBool("isAttack", true);
+        }
+        else
+        {
+            anim.SetBool("isAttack", false);
         }
         // 카메라 방향 가져오기
         Vector3 cameraForward = cameraTransform.forward;
